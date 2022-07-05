@@ -9,9 +9,17 @@ import axios from "axios"
 const Fetching = () => {
 
   const [ quotes, setQuotes ] = useState(null)
-  const [ cat, setCat ] = useState(null)
+  const [ quote, setQuote ] = useState(null)
   
   const [ counter, setCounter] = useState(0)
+
+  //1. Install and import axios
+  //2. Write and async function
+  //3. Console.log the response
+  //4. Call the function inside useEffect
+  //6. Check the console.log 
+  //7. Import useState and declare a place to hold the response 
+  //8. Set the state to the response
 
   const getQuotes = async () => {
     const response = await axios.get("https://api.quotable.io/quotes")
@@ -19,7 +27,7 @@ const Fetching = () => {
     setQuotes(response.data.results)
   }
 
-  const getPokemon = async () => {
+  const getQuote = async () => {
     const response = await axios.get("https://api.quotable.io/random")
     console.log("quote", response.data)
     setCat(response.data)
@@ -27,8 +35,8 @@ const Fetching = () => {
 
   useEffect(() => {
     getQuotes()
-    getPokemon()
-  }, [counter])
+    getQuote()
+  }, []) //empty array -> runs once, no array -> runs infinite,  [data] -> runs whenever data changes
 
   // console.log(counter)
   // console.log("quotes", quotes)
@@ -38,7 +46,7 @@ const Fetching = () => {
       <h2>Fetching Data</h2>  
       <button onClick={() => setCounter(counter + 1)}>Increment</button> {counter}
       {/* {!quotes ? "Loading" : quotes.map(quote => <p>{quote.content}</p>)} */}
-      {cat ? <div>{cat.content}</div> : ""}
+      {quote ? <div>{quote.content}</div> : ""}
     </div>
   )
 }
