@@ -13,15 +13,17 @@ const data = [
 const Teachers = () => {
 
   const [ teachers, setTeachers ] = useState(data)
-  const [ hide, setHide ] = useState(false)
+  const [ hide, setHide ] = useState(true)
 
-  console.log("data", data)
+  const toggleTeachers = () => {
+    setHide(!hide)
+  }
 
   return (
     <div>
       <h2>Teachers Component</h2>
-      <button>{hide ? "Display" : "Hide"}</button>
-      {!teachers ?  "Loading" : teachers.map(teacher => 
+      <button onClick={toggleTeachers}>{hide ? "Display" : "Hide"}</button>
+      {teachers && !hide && teachers.map(teacher => 
         <TeacherCard key={teacher.id} name={teacher.name} age={teacher.age} country={teacher.country}
       />)}
     </div>

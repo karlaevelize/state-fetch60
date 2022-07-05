@@ -9,7 +9,7 @@ const State = () => {
 
   const [ like, setLiked ] = useState(false)
 
-  console.log("amount", amount)
+  // console.log("amount", amount)
 
   const toggleLike = () => {
     setLiked(!like)
